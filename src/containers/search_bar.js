@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import fetchWeather from '../actions/index'
+import { fetchWeather } from '../actions/index'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -18,8 +18,11 @@ class SearchBar extends Component {
   }
 
   onFormSubmit(event){
-    this.props.fetchWeather(this.state.searchTerm)
     event.preventDefault()
+    this.props.fetchWeather(this.state.searchTerm)
+    this.setState({searchTerm: ""})
+
+
   }
 
   render(){
